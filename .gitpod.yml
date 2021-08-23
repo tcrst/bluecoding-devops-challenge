@@ -4,6 +4,7 @@ image:
 tasks:
   - command: docker ps
   - command: terraform version
+  - command: gp env BLUECODING=engineer
 
 ports:
   - port: 8080
