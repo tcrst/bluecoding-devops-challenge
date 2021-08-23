@@ -1,5 +1,4 @@
-# bluecode-devops-challenge
-bluecode-devops-challenge
+# bluecoding-devops-challenge
 
 Click the button below to start a new development environment for challenge:
 
