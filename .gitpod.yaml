@@ -1,10 +1,9 @@
 image:
-   file: gitpod/gitpod.Dockerfile
+  file: gitpod/gitpod.Dockerfile
 
 tasks:
   - command: docker ps
   - command: terraform version
-
 
 ports:
   - port: 8080
