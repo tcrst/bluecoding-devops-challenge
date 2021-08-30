@@ -1,2 +1,20 @@
 version: '2'
 services:
+  nginx_1:
+    image: nginx
+    volumes:
+      - ./nginx-1-static-html:/usr/share/nginx/html
+    ports:
+      - "8081:80"
+  nginx_2:
+    image: nginx
+    volumes:
+      - ./nginx-2-static-html:/usr/share/nginx/html
+    ports:
+      - "8082:80"
+  nginx_3:
+    image: nginx
+    volumes:
+      - ./nginx-3-static-html:/usr/share/nginx/html
+    ports:
+      - "8083:80"            
