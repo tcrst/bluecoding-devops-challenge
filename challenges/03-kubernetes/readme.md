@@ -2,17 +2,20 @@
 
 0.  A company wants to deploy multiple web application services on to the Kubernetes on. Ther Requirements are as follow ( only the deployment definition are needed ):
 
-    - Creates a new Kubernetes namespace resource `bluecoding-company`.
+    - Creates a new Kubernetes namespace resource `bluecoding-company`.]
+      a: kubectl create ns bluecoding-company
 
     - Deploys a new `redis` image (from Dockerhub) on the `buster` tag as "redis" Kubernetes deployment, in the `bluecoding-company` Kubernetes namespace.
 
     - Increases the pods number of the `redis` Kubernetes deployment up to 2 replicas.
+    a: kubectl scale deployment redis --replicas=2
 
     - Exposes `6379` port of the `redis` deploment.
 
     - Deploy a new `nginx` image (from Dockerhub) on the `alpine` tag as `nginx-ui` deployment, in the `bluecoding-company` Kubernetes namespace.
 
     - Increase the pods number of the `nginx-ui` deployment to 3.
+      a = kubectl scale deployment nginx --replicas=3
 
     - Create a service resource that exports `nginx-ui` as NodePort.
 
