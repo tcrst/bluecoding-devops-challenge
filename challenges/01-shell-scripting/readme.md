@@ -1,23 +1,33 @@
-Challenges:
+Add the cmd to the each `Answer` section.
 
+0. List all available branches.\
+   Answer:
+   ```
+   $git branch -a
+   * main
+   remotes/origin/HEAD -> origin/main
+   remotes/origin/levi-30-08-2021
+   remotes/origin/main
+   remotes/origin/milton-08-30-2021
+   ```
+1. Create a new branch with your *name-date* ex. cristi-23-8-2021 and switch to it.\
+   Answer:
+   ```
+   $ git checkout -b dariem-05-09-2021
+   ```
 
-1. How do you stop a process?\
-Answer: 
+2. Exclude/Ignore `notNeededFile.yml` from the current directory.\
+   Answer:
+   ```
+   $ touch .gitignore
+   $ echo 'challenges/00-git/notNeededFile.yaml' >> .gitignore
+   ```
 
-1. How to find which processes are taking all the memory?\
-Answer: 
-
-2. Set the system environment varibable BLUECODING=devops-engineer.\
-Answer:
-
-3. Give execute permissions to our script `scrip.sh` using the chmod command:\
-Answer:
-
-4. Fix the `script.sh` in the current directory and paste the lines that contain the fix.\
-Answer: 
-
-5. Write a script that goes to http://www.whatismyip.org/ and then prints “Your IP is: <Result from site>”.\
-Answer:
-
-Node:\
-    Add the command you have run to the each `Answer` section.
+3. Create a new file with your name add some random content and push it to the origin.\
+   Answer:
+   ```
+   touch test.txt
+   git add test.txt .gitignore
+   git commit -m "test file"
+   git push origin dariem-05-09-2021
+   ```

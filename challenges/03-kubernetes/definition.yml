@@ -1,1 +1,95 @@
 ---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: bluecoding-company
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis
+  namespace: bluecoding-company
+spec:  
+  replicas:  2
+  template:
+    metadata:
+      labels:
+        app: redis
+    spec:
+      containers:
+      - image: redis:buster
+        imagePullPolicy: Always
+        name: redis
+        ports:
+        - containerPort: 6379
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-ui
+  namespace: bluecoding-company
+spec:  
+  replicas:  3
+  template:
+    metadata:
+      labels:
+        app: nginx-ui
+    spec:
+      containers:
+      - image: nginix:alpine
+        imagePullPolicy: Always
+        name: nginx-ui
+        ports:
+        - containerPort: 80
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-nginx
+  namespace: bluecoding-company
+spec:
+  ports:
+    - port: 8080
+      targetPort: 80
+      protocol: TCP
+  type: NodePort
+  selector:
+    app: nginx-ui
+
+
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mongod
+  namespace: bluecoding-company
+spec:  
+  replicas:  1
+  template:
+    metadata:
+      labels:
+        app: mongod
+    spec:
+      containers:
+      - image: mongo
+        imagePullPolicy: Always
+        name: mongod
+        ports:
+            - containerPort: 27017
+        volumeMounts:
+          - name: mongodb-persistent-storage-claim
+            mountPath: /data/db
+    volumeClaimTemplates:
+    - metadata:
+        name: mongodb-persistent-storage-claim
+        annotations:
+          volume.beta.kubernetes.io/storage-class: "standard"
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        resources:
+          requests:
+            storage: 10Gi        

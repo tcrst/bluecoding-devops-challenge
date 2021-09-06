@@ -10,5 +10,5 @@ then
 	echo 'password is correct'
 else
 	echo 'wrong password'
-
+fi
 
